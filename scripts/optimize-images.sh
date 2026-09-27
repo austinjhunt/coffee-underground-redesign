@@ -20,6 +20,12 @@ for f in *.jpg *.jpeg; do
   echo "jpg  $f  $((before / 1024))K -> $(( $(size "$f") / 1024 ))K"
 done
 
+# The Events banner has a white frame baked into the Wix image; crop it off (only while it's still there).
+if [ -f events-presents.jpg ] && [ "$(magick events-presents.jpg -format '%[fx:p{2,2}.r>0.9&&p{2,2}.g>0.9&&p{2,2}.b>0.9]' info:)" = 1 ]; then
+  magick events-presents.jpg -gravity northwest -crop "%[fx:w-53]x%[fx:h-59]+24+16" +repage -strip -interlace JPEG -quality 80 events-presents.jpg
+  echo "crop frame off events-presents.jpg"
+fi
+
 # Small header/favicon copy of the user-supplied logo (logo.png itself is kept as the master).
 if [ -f logo.png ] && [ ! -f logo-sm.png ]; then
   magick logo.png -resize 88x -strip logo-sm.png
