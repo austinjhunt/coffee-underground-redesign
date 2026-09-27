@@ -59,24 +59,10 @@
 <section class="theater" id="upcoming">
   <div class="wrap">
     <h2>Upcoming events</h2>
-    <div class="show-list">
-      <article class="show">
-        <img src="../assets/img/events-saywhat.jpeg" width="380" height="244" alt="Say What?! Poetry Slam" loading="lazy">
-        <div>
-          <h3>Say What?! Poetry Slam and Open Mic</h3>
-          <p class="when">Sundays 7:30pm-9pm</p>
-          <p>Read or perform your own original poems, plus hear great local and touring poets. $10 admission. <a href="https://www.witsendpoetry.com">witsendpoetry.com</a></p>
-        </div>
-      </article>
-      <article class="show">
-        <img src="../assets/img/events-noexp.jpeg" width="750" height="750" alt="No Expectations Comedy" loading="lazy">
-        <div>
-          <h3>No Expectations Comedy Open Mic</h3>
-          <p class="when">Every Monday at 7:30pm</p>
-          <p>The longest-running comedy show in Greenville! Free admission with food &amp;/or beverage purchase every Monday at 7:30pm! No distasteful material.</p>
-          <p>To sign up, arrive a bit early. <a href="https://www.noexpectationscomedy.com">noexpectationscomedy.com</a></p>
-        </div>
-      </article>
+    <!-- Filled from assets/data/events.json, which CI rebuilds daily from the CU Google Calendar
+         (scripts/build-events.py). The paragraph below shows if JS is off or the file can't load. -->
+    <div class="feed" id="event-feed">
+      <p class="feed-note">See what's on this week in the <a href="calendar/">full calendar</a>.</p>
     </div>
 
     <div class="pdf-callout" style="margin-top:2rem">
@@ -119,6 +105,49 @@
     <p class="copyright">&copy; 2026 Dana L.</p>
   </div>
 </footer>
+<script>
+(function () {
+  // Next 7 days of the CU Google Calendar, in Greenville time.
+  var box = document.getElementById('event-feed'), TZ = 'America/New_York', DAYS = 7;
+  var dayKey = function (d) { return new Intl.DateTimeFormat('en-CA', { timeZone: TZ }).format(d); };
+  var label = function (key) {
+    return new Date(key + 'T12:00:00Z').toLocaleDateString('en-US', { timeZone: 'UTC', weekday: 'short', month: 'short', day: 'numeric' });
+  };
+  var clock = function (d) {  // "7pm", "8:30pm"
+    var p = new Intl.DateTimeFormat('en-US', { timeZone: TZ, hour: 'numeric', minute: '2-digit' }).formatToParts(d), o = {};
+    p.forEach(function (x) { o[x.type] = x.value; });
+    return o.hour + (o.minute === '00' ? '' : ':' + o.minute) + o.dayPeriod.toLowerCase();
+  };
+  fetch('../assets/data/events.json', { cache: 'no-cache' }).then(function (r) {
+    if (!r.ok) throw r; return r.json();
+  }).then(function (data) {
+    var now = new Date(), today = dayKey(now), end = dayKey(new Date(now.getTime() + (DAYS - 1) * 864e5)), days = {};
+    data.events.forEach(function (e) {
+      var key = e.allDay ? e.start : dayKey(new Date(e.start));
+      if (key < today || key > end) return;
+      if (!e.allDay && new Date(e.start) < now - 2 * 36e5) return;  // drop shows that started over 2h ago
+      (days[key] = days[key] || []).push(e);
+    });
+    var keys = Object.keys(days).sort();
+    if (!keys.length) return;  // keep the fallback link
+    box.textContent = '';
+    keys.forEach(function (key) {
+      var card = document.createElement('div'), h = document.createElement('h3'), ul = document.createElement('ul');
+      card.className = 'feed-day';
+      h.textContent = key === today ? 'Today' : label(key);
+      days[key].forEach(function (e) {
+        var li = document.createElement('li'), t = document.createElement('span');
+        t.className = 'when';
+        t.textContent = e.allDay ? 'All day' : clock(new Date(e.start));
+        li.append(t, ' ', e.title);
+        ul.append(li);
+      });
+      card.append(h, ul);
+      box.append(card);
+    });
+  }).catch(function () {});
+})();
+</script>
 <script>
 (function () {
   var b = document.querySelector('.nav-toggle'), n = document.getElementById('site-nav');

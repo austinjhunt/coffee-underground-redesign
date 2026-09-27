@@ -140,18 +140,14 @@ figcaption { font-size: 0.92rem; color: var(--muted); margin-top: 0.4rem; }
 .theater h2, .theater h3 { color: #fff; }
 .theater a { color: #cfc8ea; }
 .theater .kicker { font-family: var(--serif); font-style: italic; color: #cfc8ea; font-size: 1.1rem; margin-bottom: 0.25rem; }
-.show-list { display: grid; gap: 1.25rem; }
-@media (min-width: 44rem) { .show-list { grid-template-columns: 1fr 1fr; } }
-.show {
-  background: var(--card); color: var(--ink);
-  border-top: 6px solid var(--curtain); border-radius: 10px; overflow: hidden;
-  display: grid; grid-template-rows: auto 1fr;
-}
-.show img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; }
-.show div { padding: 1.1rem 1.25rem 1.3rem; }
-.show h3 { color: var(--ink); margin-bottom: 0.2rem; }
-.show .when { font-weight: 700; color: var(--curtain); margin-bottom: 0.6rem; }
-.show a { color: var(--plum); }
+.feed { display: grid; gap: 1rem; }
+@media (min-width: 44rem) { .feed { grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); } }
+.feed-day { background: var(--card); color: var(--ink); border-top: 6px solid var(--curtain); border-radius: 10px; padding: 0.9rem 1.1rem 1rem; }
+.theater .feed-day h3 { color: var(--ink); font-size: 1.15rem; margin-bottom: 0.4rem; }
+.feed-day ul { list-style: none; margin: 0; padding: 0; }
+.feed-day li { padding: 0.3rem 0; border-top: 1px solid var(--line); }
+.feed-day li:first-child { border-top: 0; }
+.feed-day .when { display: inline-block; min-width: 4.2rem; font-weight: 700; color: var(--curtain); font-variant-numeric: tabular-nums; }
 .define { font-family: var(--serif); border-left: 3px solid var(--curtain); padding-left: 1rem; margin: 1rem 0 1.5rem; }
 .define b { font-weight: 400; font-size: 1.3rem; }
 .define span { color: #cfc8ea; }

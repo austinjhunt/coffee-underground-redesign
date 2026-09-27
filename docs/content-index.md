@@ -5,7 +5,7 @@ Old URL -> new file. Every text block from each page is carried over; changes ar
 | Old URL | New file | Sections |
 |---|---|---|
 | / | index.html | HOT coffee. COOL vibe. intro; Coffee & Main / Mice on Main; THEATER underground; "Some days you make the coffee..."; Something for everyone...; 5-photo strip |
-| /events | events/index.html | THEATER UNDERGROUND; Alchemy Comedy Theater (definition, schedule, tickets, classes, contact); Upcoming events: Say What?! Poetry Slam and Open Mic, No Expectations Comedy Open Mic; link to full calendar |
+| /events | events/index.html | THEATER UNDERGROUND; Alchemy Comedy Theater (definition, schedule, tickets, classes, contact); Upcoming events: next 7 days from the Google Calendar (was two static cards: Say What?!, No Expectations); link to full calendar |
 | (new) | events/calendar/index.html | Google Calendar "-CU Public Events" (agenda view), plus open, add and subscribe links |
 | /menus | menus/index.html | 5 category tiles (COFFEES, NO BUZZ, INDULGE, SWEETNESS, NOURISH) + full 7/10/25 menu text + PDF download |
 | /about-cu | about-cu/index.html | IT BEGAN... in 1991 when...; December 31, 1992; Wheels Were Spinning; May 1, 1995; Over the Years; Aahh, a few memories...; Thanks to YOU...; 9 captioned photos |

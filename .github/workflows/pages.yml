@@ -1,11 +1,14 @@
-# Publishes the static site to GitHub Pages on every push to main.
-# No build step: it copies the site files into _site, adds redirect pages
-# (Pages ignores _redirects), checks local links, then deploys.
+# Publishes the static site to GitHub Pages on every push to main, and once a day
+# so the Events page's list of upcoming shows (built from the CU Google Calendar) stays current.
+# No build step for the pages: it copies the site files into _site, adds redirect pages
+# (Pages ignores _redirects), writes assets/data/events.json, checks local links, then deploys.
 name: Deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "0 9 * * *"   # 5am Eastern (4am in winter)
   workflow_dispatch:
 
 permissions:
@@ -54,6 +57,13 @@ jobs:
                   f'<link rel="canonical" href="{rel}"><a href="{rel}">Continue</a>\n')
               print(f"/{src}/ -> {rel}")
           EOF
+
+      - name: Build upcoming events from Google Calendar
+        # If Google is unreachable, deploy anyway; the Events page falls back to a calendar link.
+        continue-on-error: true
+        run: |
+          pip install --quiet icalendar recurring-ical-events
+          python3 scripts/build-events.py _site/assets/data/events.json
 
       - name: Check local links
         run: python3 scripts/check-links.py _site
