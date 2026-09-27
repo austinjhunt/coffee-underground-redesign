@@ -18,6 +18,11 @@
 <script>
 (function () {
   try {
+    // Unlisted replay link: /?replay-intro clears the flag, then drops the param so a reload doesn't replay.
+    if (/[?&]replay-intro(=|&|$)/.test(location.search)) {
+      localStorage.removeItem('cu-intro');
+      history.replaceState(null, '', location.pathname + location.hash);
+    }
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     // Once per 30 days per browser, not per tab, so visitors arriving from links don't sit through it again.
     var last = +localStorage.getItem('cu-intro') || 0;
