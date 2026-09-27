@@ -8,7 +8,7 @@ without anyone editing HTML. The owner only maintains the Google Calendar.
 Needs: pip install icalendar recurring-ical-events
 Usage: python3 scripts/build-events.py [output-path]   (default: assets/data/events.json)
 """
-import json, sys, urllib.request
+import html, json, re, sys, urllib.request
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -26,6 +26,19 @@ with urllib.request.urlopen(ICS, timeout=30) as r:
     cal = icalendar.Calendar.from_ical(r.read())
 
 today = datetime.now(TZ).date()
+
+def plain(value):
+    """Google Calendar descriptions are HTML. Reduce to plain text; links become their URL."""
+    t = str(value or "")
+    t = re.sub(r'(?is)<a\b[^>]*href="([^"]+)"[^>]*>.*?</a>', r" \1 ", t)
+    t = re.sub(r"(?i)<br\s*/?>|</(p|div|li)>", "\n", t)
+    t = html.unescape(re.sub(r"<[^>]+>", "", t)).replace("\xa0", " ")
+    t = re.sub(r"<\s*(https?://\S+?)\s*>", r"\1", t)          # "<url>" -> "url"
+    t = re.sub(r"[ \t]+", " ", t)
+    t = re.sub(r" *\n *", "\n", t)
+    return re.sub(r"\n{3,}", "\n\n", t).strip()
+
+
 events = []
 for ev in recurring_ical_events.of(cal).between(today, today + timedelta(days=DAYS)):
     if str(ev.get("STATUS", "")).upper() == "CANCELLED":
@@ -37,7 +50,13 @@ for ev in recurring_ical_events.of(cal).between(today, today + timedelta(days=DA
     else:
         start = (start if start.tzinfo else start.replace(tzinfo=TZ)).astimezone(TZ)
         start_iso = start.isoformat()
-    events.append({"title": str(ev.get("SUMMARY", "")).strip(), "start": start_iso, "allDay": all_day})
+    events.append({
+        "title": str(ev.get("SUMMARY", "")).strip(),
+        "start": start_iso,
+        "allDay": all_day,
+        "note": plain(ev.get("LOCATION")),         # the owner uses Location for a short line: price, doors, etc.
+        "details": plain(ev.get("DESCRIPTION")),
+    })
 
 events.sort(key=lambda e: (e["start"][:10], not e["allDay"], e["start"]))
 out.parent.mkdir(parents=True, exist_ok=True)

@@ -118,6 +118,18 @@
     p.forEach(function (x) { o[x.type] = x.value; });
     return o.hour + (o.minute === '00' ? '' : ':' + o.minute) + o.dayPeriod.toLowerCase();
   };
+  var el = function (tag, cls, text) { var n = document.createElement(tag); n.className = cls; n.textContent = text; return n; };
+  var richText = function (para) {  // calendar text is plain; keep its line breaks and link http(s) URLs
+    var p = document.createElement('p');
+    para.split('\n').forEach(function (line, i) {
+      if (i) p.append(document.createElement('br'));
+      line.split(/(https?:\/\/[^\s<>"]+)/).forEach(function (part, j) {
+        if (j % 2) { var a = document.createElement('a'); a.href = part; a.textContent = part.replace(/^https?:\/\//, '').replace(/\/$/, ''); p.append(a); }
+        else if (part) p.append(part);
+      });
+    });
+    return p;
+  };
   fetch('../assets/data/events.json', { cache: 'no-cache' }).then(function (r) {
     if (!r.ok) throw r; return r.json();
   }).then(function (data) {
@@ -136,10 +148,16 @@
       card.className = 'feed-day';
       h.textContent = key === today ? 'Today' : label(key);
       days[key].forEach(function (e) {
-        var li = document.createElement('li'), t = document.createElement('span');
-        t.className = 'when';
-        t.textContent = e.allDay ? 'All day' : clock(new Date(e.start));
-        li.append(t, ' ', e.title);
+        var li = document.createElement('li');
+        li.append(el('span', 'when', e.allDay ? 'All day' : clock(new Date(e.start))), el('span', 'what', e.title));
+        if (e.note) li.append(el('p', 'note', e.note));
+        if (e.details) {  // full description, collapsed by default
+          var more = document.createElement('details'), sum = document.createElement('summary'), body = el('div', 'more');
+          sum.textContent = 'Details';
+          e.details.split(/\n{2,}/).forEach(function (para) { body.append(richText(para)); });
+          more.append(sum, body);
+          li.append(more);
+        }
         ul.append(li);
       });
       card.append(h, ul);
