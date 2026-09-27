@@ -1,0 +1,74 @@
+# Publishes the static site to GitHub Pages on every push to main.
+# No build step: it copies the site files into _site, adds redirect pages
+# (Pages ignores _redirects), checks local links, then deploys.
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Stage site files
+        run: |
+          rsync -a ./ _site/ \
+            --exclude '.git*' --exclude '.github' --exclude '_site' \
+            --exclude 'docs' --exclude 'scripts' \
+            --exclude 'CLAUDE.md' --exclude 'README.md' --exclude '_redirects' \
+            --exclude '.DS_Store'
+
+      - name: Turn _redirects into redirect pages
+        # e.g. "/blank /about-cu/ 301" -> _site/blank/index.html pointing at ../about-cu/
+        run: |
+          python3 - <<'EOF'
+          import os
+          for line in open("_redirects"):
+              parts = line.split()
+              if len(parts) < 2 or parts[0].startswith("#"):
+                  continue
+              src, dst = parts[0].strip("/"), parts[1]
+              if not src:
+                  continue
+              out = os.path.join("_site", src, "index.html")
+              if os.path.exists(out):
+                  continue
+              rel = os.path.relpath(dst.strip("/") or ".", src) + "/"
+              os.makedirs(os.path.dirname(out), exist_ok=True)
+              open(out, "w").write(
+                  f'<!doctype html><meta charset="utf-8"><title>Redirecting</title>'
+                  f'<meta http-equiv="refresh" content="0; url={rel}">'
+                  f'<link rel="canonical" href="{rel}"><a href="{rel}">Continue</a>\n')
+              print(f"/{src}/ -> {rel}")
+          EOF
+
+      - name: Check local links
+        run: python3 scripts/check-links.py _site
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
