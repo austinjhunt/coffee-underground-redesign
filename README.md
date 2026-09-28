@@ -11,7 +11,8 @@ Plain static HTML and one CSS file. No build step, no framework.
 Page folders match the old Wix URLs (`/menus`, `/about-cu`, `/coffee-facts`, `/contact`, `/events`), so existing links keep working. `_redirects` sends `/blank` (the unfinished Wix Extras page, not carried over) to `/about-cu/` on Netlify or Cloudflare Pages.
 
 - `assets/css/styles.css`: all styles
-- `docs/OUTLINE.md`: problems found and fixes
+- `docs/what-changed.md`: plain-language summary of every change, for the owner
+- `docs/OUTLINE.md`: problems found and fixes (working log, more technical)
 - `docs/content-index.md`: old page > new file map
 
 ## Needs the owner
