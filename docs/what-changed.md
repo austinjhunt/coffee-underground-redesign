@@ -4,20 +4,57 @@ September 27, 2026
 
 All of the text and photos from the Wix site are still here, in your words. The only text changes are spelling and grammar fixes, and each one is listed near the end of this document.
 
-The changes are about how the site works for visitors: on phones, for people who use screen readers or navigate by keyboard, and for anyone checking what's on this week. Each item below says what visitors ran into, what's different now, and why that helps.
+The changes are about how the site works for visitors: on phones, for people who use screen readers or navigate by keyboard, and for anyone checking what's going on this week. Each item below says what visitors ran into, what's different now, and why that helps.
 
 ## At a glance
 
 - The site fits any screen, from a small phone to a wide monitor.
-- The full menu is readable on the page, not only as a PDF.
-- The Events page shows the next seven days from your Google Calendar and refreshes itself every morning.
+- The full menu is readable on the page, not only as a PDF - PDF is still downloadable though!
+- The Events page shows the next seven days from your Google Calendar and refreshes itself every morning automatically; there is also a new page dedicated to a full view of the calendar.
 - Pages load faster, and the main content appears sooner.
 - The site is easier to use with a keyboard or a screen reader.
 - Old links to your pages still work.
+- All of the written content and page titles are still your writing!
 
-## Using the site on a phone
+### Mobile Screenshots from Original Wix Site
 
-**Layout.** On phones, the Wix site kept its desktop layout and shrank it, so text sat in a narrow column between purple side bars. The new layout adjusts to the screen, so text uses the full width and stays readable. Most people look up a café on their phone, often while they're out deciding where to go.
+<table>
+  <tr>
+    <td valign="top" width="220">
+      <a href="IMG_1788-1.jpg"><img src="IMG_1788-1.jpg" width="200" alt="home page, content not rendering, chat button overlay"></a><br>
+      <b>Home Page Broken on Mobile</b><br>
+      On mobile devices, home page content is not rendering and the user primarily just sees the chat button overlay.
+    </td>
+    <td valign="top" width="220">
+      <a href="IMG_1789.jpg"><img src="IMG_1789.jpg" width="200" alt="events page, content is compacted, banner image is cropped, gray nav bar takes a lot of vertical space"></a><br>
+      <b>Events</b><br>
+      On the events page, content is compacted, banner image is cropped, gray nav bar takes a lot of vertical space that could be used differently.
+    </td>
+    <td valign="top" width="220">
+      <a href="IMG_1790.jpg"><img src="IMG_1790.jpg" width="200" alt="footer has a non-rendering image reference"></a><br>
+      <b>Footer - broke image</b><br>
+      The footer has a non-rendering image reference.
+    </td>
+  </tr>
+  <tr>
+    <td valign="top" width="220">
+      <a href="IMG_1791.jpg"><img src="IMG_1791.jpg" width="200" alt="menu access requires leaving site to view PDF - visitor just sees an Adobe logo"></a><br>
+      <b>Menu Access</b><br>
+      Menu access requires leaving site to view PDF - visitor just sees an Adobe logo
+    </td>
+    <td valign="top" width="220">
+      <a href="IMG_1794.jpg"><img src="IMG_1794.jpg" width="200" alt="contact page, map is embedded as an iframe that is zoomed out and a little cramped"></a><br>
+      <b>Contact Page</b><br>
+      Google Map is embedded as an iframe that is zoomed out and cramped for mobile experience.
+    </td>
+    <td></td>
+  </tr>
+</table>
+
+
+### What changed?
+
+**Layout.** On phones, the original Wix site keeps its desktop layout and shrinks it, and content does not render properly. The new layout adjusts to the screen, so text uses the full width and stays readable. Most people look up a café on their phone, often while they're out deciding where to go.
 
 **Chat button.** A chat bubble floated over the page on phones and covered text. It's gone now, and visitors reach you by phone or email instead, so nothing sits on top of what people are reading.
 
