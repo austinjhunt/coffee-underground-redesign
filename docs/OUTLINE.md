@@ -66,6 +66,23 @@ Not changed:
 - Events: "check out their classes page" has no link.
 - Most photos have no captions or alt text on Wix, so several use generic alt text.
 
+## Domain and email (before launch)
+Checked 2026-09-27 with `dig`:
+- DNS for coffeeunderground.info is managed by Wix (nameservers `ns0.wixdns.net`, `ns1.wixdns.net`).
+- Mail (MX) points to Google Workspace: `aspmx.l.google.com` (10), `alt1` (20), `alt2` (30), `alt3` (40), `alt4.aspmx.l.google.com` (50). There's also a TXT record `google-site-verification=38u1mZV2PgPImobbkWaoSjenGHTUyNLb1kKwFuObM-I`.
+- The site itself only lists `cugreenville@gmail.com`. No `@coffeeunderground.info` address appears anywhere, so it's unknown whether the Workspace mailboxes are still used.
+- There's no SPF record. If they send mail from the domain, it's more likely to be marked as spam.
+
+Ask the owner:
+- Do you use Google Workspace, and are there any `@coffeeunderground.info` addresses?
+- Is the domain registered through Wix?
+
+At launch, keep the five MX records and the Google TXT record exactly as they are:
+- Domain stays at Wix: only add or change the records that point the website at the new host (e.g. GitHub Pages A/AAAA records and `www` CNAME). Leave the MX and TXT records alone.
+- DNS moves elsewhere (e.g. Cloudflare): recreate the MX and TXT records there first, then switch nameservers.
+- Cancel the Wix plan only after the new site loads on coffeeunderground.info and mail still arrives.
+- Optional, if they send from the domain: add SPF (`v=spf1 include:_spf.google.com ~all`) and turn on DKIM in the Google Admin console.
+
 ## Out of scope: content accuracy
 This is a redesign, not a content rewrite. Factual accuracy of the existing copy isn't reviewed or changed. Noted once and dropped from the TODOs (2026-09-27):
 - Coffee Facts: "Coffea Typica (Robusta)" mixes up species; Press Pot and Cone Drip both point to the "electric perc setting"; the industry numbers ($12 billion, 23,000 coffeehouses) look dated.
