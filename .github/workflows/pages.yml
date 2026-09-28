@@ -58,6 +58,23 @@ jobs:
               print(f"/{src}/ -> {rel}")
           EOF
 
+      - name: Keep the preview out of search results
+        # Demo copy only: the owner's content shouldn't be indexed at this address. The repo HTML stays clean.
+        run: |
+          python3 - <<'EOF'
+          import pathlib, re
+          tag = '<meta name="robots" content="noindex">'
+          for f in pathlib.Path("_site").rglob("*.html"):
+              s = f.read_text(encoding="utf-8")
+              if tag in s:
+                  continue
+              s, n = re.subn(r'(<meta charset="utf-8">)', r'\1\n' + tag, s, count=1, flags=re.I)
+              if not n:
+                  s = re.sub(r'(<head[^>]*>)', r'\1\n' + tag, s, count=1, flags=re.I)
+              f.write_text(s, encoding="utf-8")
+              print("noindex", f)
+          EOF
+
       - name: Build upcoming events from Google Calendar
         # If Google is unreachable, deploy anyway; the Events page falls back to a calendar link.
         continue-on-error: true
