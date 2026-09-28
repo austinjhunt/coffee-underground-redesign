@@ -223,9 +223,13 @@ figcaption { font-size: 0.92rem; color: var(--muted); margin-top: 0.4rem; }
 .story .date { font-family: var(--sans); font-weight: 700; font-size: 1.05rem; }
 
 /* ---------- coffee facts ---------- */
+.facts-photos { max-width: 40rem; margin-bottom: 2rem; }
+/* Desktop: use the full content width instead of the narrow reading column. */
+@media (min-width: 52rem) { .facts-photos, .facts.prose { max-width: none; } }
 .facts h2 { margin-top: 2.5rem; }
 .facts h3 { font-size: 1.1rem; margin: 1.6rem 0 0.4rem; }
 .facts ul { padding-left: 1.2rem; }
+.facts .toc { padding-left: 0; }
 .facts li { margin-bottom: 0.35rem; }
 .facts blockquote { margin: 1rem 0; padding-left: 1rem; border-left: 3px solid var(--copper); font-family: var(--serif); font-style: italic; }
 .toc { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; }
