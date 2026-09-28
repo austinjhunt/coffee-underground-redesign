@@ -16,38 +16,40 @@ The changes are about how the site works for visitors: on phones, for people who
 - Old links to your pages still work.
 - All of the written content and page titles are still your writing!
 
-### Mobile Screenshots from Original Wix Site
+### Mobile Screenshots: Original Wix Site and Redesign
+
+Both sets were taken on an iPhone-sized screen. The redesign shots are from the live preview site.
 
 <table>
   <tr>
-    <td valign="top" width="220">
-      <a href="IMG_1788-1.jpg"><img src="IMG_1788-1.jpg" width="200" alt="home page, content not rendering, chat button overlay"></a><br>
-      <b>Home Page Broken on Mobile</b><br>
-      On mobile devices, home page content is not rendering and the user primarily just sees the chat button overlay.
-    </td>
-    <td valign="top" width="220">
-      <a href="IMG_1789.jpg"><img src="IMG_1789.jpg" width="200" alt="events page, content is compacted, banner image is cropped, gray nav bar takes a lot of vertical space"></a><br>
-      <b>Events</b><br>
-      On the events page, content is compacted, banner image is cropped, gray nav bar takes a lot of vertical space that could be used differently.
-    </td>
-    <td valign="top" width="220">
-      <a href="IMG_1790.jpg"><img src="IMG_1790.jpg" width="200" alt="footer has a non-rendering image reference"></a><br>
-      <b>Footer - broken image</b><br>
-      The footer has a non-rendering image reference.
-    </td>
+    <th align="left">Screen</th>
+    <th align="left">Before (Wix)</th>
+    <th align="left">After (redesign)</th>
   </tr>
   <tr>
-    <td valign="top" width="220">
-      <a href="IMG_1791.jpg"><img src="IMG_1791.jpg" width="200" alt="menu access requires leaving site to view PDF - visitor just sees an Adobe logo"></a><br>
-      <b>Menu Access</b><br>
-      Menu access requires leaving site to view PDF - visitor just sees an Adobe logo
-    </td>
-    <td valign="top" width="220">
-      <a href="IMG_1794.jpg"><img src="IMG_1794.jpg" width="200" alt="contact page, map is embedded as an iframe that is zoomed out and a little cramped"></a><br>
-      <b>Contact Page</b><br>
-      Google Map is embedded as an iframe that is zoomed out and cramped for mobile experience.
-    </td>
-    <td></td>
+    <td valign="top" width="240"><b>Home Page Broken on Mobile</b><br>On mobile devices, home page content is not rendering and the user primarily just sees the chat button overlay.</td>
+    <td valign="top" width="220"><a href="IMG_1788-1.jpg"><img src="IMG_1788-1.jpg" width="200" alt="home page, content not rendering, chat button overlay"></a></td>
+    <td valign="top" width="220"><a href="after-home.jpg"><img src="after-home.jpg" width="200" alt="Home page on a phone: content first, no chat overlay."></a><br><sub>Home page on a phone: content first, no chat overlay.</sub></td>
+  </tr>
+  <tr>
+    <td valign="top" width="240"><b>Events</b><br>On the events page, content is compacted, banner image is cropped, gray nav bar takes a lot of vertical space that could be used differently.</td>
+    <td valign="top" width="220"><a href="IMG_1789.jpg"><img src="IMG_1789.jpg" width="200" alt="events page, content is compacted, banner image is cropped, gray nav bar takes a lot of vertical space"></a></td>
+    <td valign="top" width="220"><a href="after-events.jpg"><img src="after-events.jpg" width="200" alt="Events page: full-width stage banner with readable heading text."></a><br><sub>Events page: full-width stage banner with readable heading text.</sub></td>
+  </tr>
+  <tr>
+    <td valign="top" width="240"><b>Footer - broken image</b><br>The footer has a non-rendering image reference.</td>
+    <td valign="top" width="220"><a href="IMG_1790.jpg"><img src="IMG_1790.jpg" width="200" alt="footer has a non-rendering image reference"></a></td>
+    <td valign="top" width="220"><a href="after-footer.jpg"><img src="after-footer.jpg" width="200" alt="Footer: hours, tappable phone and email, social links; no broken image."></a><br><sub>Footer: hours, tappable phone and email, social links; no broken image.</sub></td>
+  </tr>
+  <tr>
+    <td valign="top" width="240"><b>Menu Access</b><br>Menu access requires leaving site to view PDF - visitor just sees an Adobe logo</td>
+    <td valign="top" width="220"><a href="IMG_1791.jpg"><img src="IMG_1791.jpg" width="200" alt="menu access requires leaving site to view PDF - visitor just sees an Adobe logo"></a></td>
+    <td valign="top" width="220"><a href="after-menu.jpg"><img src="after-menu.jpg" width="200" alt="Menu: every item and price on the page, with a jump bar."></a><br><sub>Menu: every item and price on the page, with a jump bar.</sub></td>
+  </tr>
+  <tr>
+    <td valign="top" width="240"><b>Contact Page</b><br>Google Map is embedded as an iframe that is zoomed out and cramped for mobile experience.</td>
+    <td valign="top" width="220"><a href="IMG_1794.jpg"><img src="IMG_1794.jpg" width="200" alt="contact page, map is embedded as an iframe that is zoomed out and a little cramped"></a></td>
+    <td valign="top" width="220"><a href="after-contact.jpg"><img src="after-contact.jpg" width="200" alt="Contact: map card with Directions, Apple Maps and Call buttons."></a><br><sub>Contact: map card with Directions, Apple Maps and Call buttons.</sub></td>
   </tr>
 </table>
 
