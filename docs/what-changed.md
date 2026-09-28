@@ -1,12 +1,22 @@
-# Coffee Underground website redesign: what changed and why
 
-September 27, 2026
+# Coffee Underground website redesign proposal (09/27/2026)
 
-All of the text and photos from the Wix site are still here, in your words. The only text changes are spelling and grammar fixes, and each one is listed near the end of this document.
+This is a brief doc outlining a light redesign of [coffeeunderground.info](https://coffeeunderground.info), for which a preview can be found at [austinjhunt.com/coffee-underground-redesign](https://austinjhunt.com/coffee-underground-redesign).
 
-The changes are about how the site works for visitors: on phones, for people who use screen readers or navigate by keyboard, and for anyone checking what's going on this week. Each item below says what visitors ran into, what's different now, and why that helps.
+## Who am I? Am I credible? 
+I'm [Austin Hunt](https://austinjhunt.com), a Coffee Underground regular of 5 years with a background of almost a decade in web development, web redesigns & web accessibility (for [College of Charleston's](https://charleston.edu)) IT department.
 
-## At a glance
+I spent some time today (Sunday, 09/27/2026) reviewing the current site and taking notes of some UX things that could benefit from a refactor, primarily centered on how the mobile experience feels (since that's how most folks access the web nowadays).
+
+## What I didn't change
+
+All of the original *content*, the text and photos, from the Wix site are still here, in your words. The only text changes are minor spelling and grammar fixes, and each one is listed near the end of this document. 
+
+## What I did change
+
+The changes are about how the site works for visitors: on phones, for people who use screen readers or navigate by keyboard, and for anyone checking what's going on this week. Each item below says what visitors ran into, what's different now, and why that helps. (Screenshots were taken by me, on my iPhone).
+
+## At a glance / TLDR
 
 - The site fits any screen, from a small phone to a wide monitor.
 - The full menu is readable on the page, not only as a PDF - PDF is still downloadable though!
@@ -25,7 +35,7 @@ Both sets were taken on an iPhone-sized screen. The redesign shots are from the 
     <th align="left">Screen</th>
     <th align="left">Before (Wix)</th>
     <th align="left">After (redesign)</th>
-    <th align="left">After, further down</th>
+    <th align="left">After (redesign)</th>
   </tr>
   <tr>
     <td valign="top" width="240"><b>Home Page Broken on Mobile</b><br>On mobile devices, home page content is not rendering and the user primarily just sees the chat button overlay.</td>
@@ -78,13 +88,13 @@ Both sets were taken on an iPhone-sized screen. The redesign shots are from the 
 
 **Instagram.** The footer showed an Instagram icon that didn't link anywhere. It now goes to instagram.com/coffee.underground on every page.
 
-**Photos.** Wix showed most photos about 200 pixels wide, which is small on a phone and soft on a large screen. Photos now fill their space and stay sharp at any size.
+**Photos.** On the Wix site, most photos appear as small, fixed-size thumbnails, about 170 to 300 pixels wide, even when there's room for more. Photos now fill the space available, so they show larger on both phones and computers.
 
 ## Finding and contacting the café
 
-**Map.** The old map was a full Google Maps widget that loaded slowly, and a pop-up covered the pin. It's replaced by a lighter map in a card with three buttons: Directions (Google Maps), Apple Maps and Call. The "getting UNDERGROUND" directions sit next to it as two short steps. Someone standing on Main Street can get directions or call you with one tap.
+**Map.** The old map was Wix's Google Maps widget. It opened zoomed out, with a pop-up covering the pin, and downloaded about 1.4 MB on a phone. The new map is Google's standard embedded map, about 0.8 MB. It opens at street level on 1 E. Coffee St. with the pin visible. It sits in a card with the address and three buttons: Directions (Google Maps), Apple Maps and Call. The "getting UNDERGROUND" directions sit next to it as two short steps.
 
-**Contact form.** The message form only worked while the site was hosted on Wix. A "Send a message" button now opens a new email to cugreenville@gmail.com, so messages come straight to you and there's no form to maintain.
+**Contact form.** The current site depends on Wix hosting for a contact form. In this version, a "Send a message" button opens a new email to cugreenville@gmail.com with a pre-templated subject, so messages come straight to you and there's no form to maintain.
 
 **Old links.** Page addresses match the Wix ones (/events, /menus, /about-cu, /coffee-facts, /contact), so links that people saved, shared or found through search still work.
 
@@ -98,11 +108,11 @@ Both sets were taken on an iPhone-sized screen. The redesign shots are from the 
 
 ## Events and the theater
 
-**Upcoming events.** The "Upcoming events" section had two fixed descriptions, one for the poetry slam and one for the comedy open mic. They never changed, so cancellations, one-off shows, holiday hours and other regulars like Alchemy Improv and the Greenville Jazz Collective didn't show up. The section now lists the next seven days from your Google Calendar, grouped by day with start times. Each event shows the short note you put in the calendar's location field (price or admission), plus a "Details" link that opens the full description. The site checks the calendar every morning. You keep one calendar up to date and the website follows it, so nobody has to edit the site when a show changes.
+**Upcoming events.** I am not sure how the [current Upcoming Events](https://www.coffeeunderground.info/events) are being managed on the Wix site, as they appear to include pictures that the source Google Calendar events don't have. I assume that requires frequently editing the site, but could be wrong. With this new version, "Upcoming Events" now lists the next seven days from your Google Calendar *dynamically*, grouped by day with start times. Each event shows the short note you put in the calendar's location field (price or admission), plus an expandable/collapsible "Details" link that opens the full description. The new site has an automated job that checks the calendar every morning and pulls the latest event feed. You keep one calendar up to date and the website follows it, so nobody has to edit the site when a show changes.
 
-**Full calendar.** The calendar sat in a fixed-size box that didn't scroll and was too wide for phones. It now has its own page that fills the screen, with buttons to open it full screen, add it to Google Calendar, or subscribe in Apple Calendar or Outlook. The Events page links to it. Regulars can put your shows in their own calendar and see changes automatically.
+**Full calendar.** The calendar sat in a fixed-size iframe and required scrolling horizontally on the page when viewing from mobile. It now has its own page that fills the screen, with buttons to open it full screen, add it to Google Calendar, or subscribe in Apple Calendar or Outlook. The Events page links to it. Regulars can put your shows in their own calendar and see changes automatically.
 
-**Theater banner.** The top of the Events page was a photo with "COFFEE UNDERGROUND PRESENTS" painted into it, and "THEATER UNDERGROUND" placed over part of it on a black box. Since most of the heading was part of a picture, screen readers and search engines couldn't read it, and it couldn't adjust to different screen sizes. The banner is now a drawn stage, with red curtains gathered at the sides, a draped valance across the top and a soft spotlight, and "Coffee Underground presents THEATER underground" is real text in front of it. Everyone can read the heading, including search engines. It stays sharp at every size, and the page loads faster without the large photo.
+**Theater banner.** The top of the Events page was a photo with "COFFEE UNDERGROUND PRESENTS" painted into it, and "THEATER UNDERGROUND" placed over part of it on a black box. Since most of the heading was part of a picture, screen readers and search engines couldn't read it, and it couldn't adjust to different screen sizes. The banner is now a drawn stage, with red curtains gathered at the sides, a draped valance across the top and a soft spotlight, and "Coffee Underground presents THEATER underground" is real text in front of it. Everyone can read the heading, including search engines and screen readers. It stays sharp at every size, and the page loads faster without the large photo.
 
 ## Faster pages
 
@@ -113,6 +123,11 @@ Both sets were taken on an iPhone-sized screen. The redesign shots are from the 
 **Less jumping.** Pages used to shift as photos and fonts loaded, so text moved while people were reading or about to tap. Every photo now has its space reserved ahead of time, and the Events page no longer jumps when its fonts load. That means fewer mis-taps and less losing your place.
 
 **Logo.** The small logo in the page header was a large file shown at a tiny size on every page. A small copy is used there now, and the full-size logo is kept for other uses.
+
+## New Home Page Intro / Splash - Latte Animation (Optional, Can Remove)
+<img src="intro-latte.png" width="200" alt="Screenshot of the fully rendered latte art intro splash page">
+
+This is a very short intro animation of a latte being poured in front of an impressionist brick design next to a staircase; it displays on the site once and then won't show again for 30 days in your browser, at which point it shows again. It is driven by the absence of a `cu-intro` key in the browser's `localStorage`. You can force it to replay again by adding `?replay-intro` to the URL.
 
 ## Accessibility
 
@@ -126,6 +141,23 @@ These changes help people who use screen readers, navigate by keyboard, or are s
 - Buttons and links are big enough to tap easily.
 - Google's Lighthouse tool scores every page 100 out of 100 for accessibility.
 
+
+<table>
+  <tr>
+    <th align="left">Version</th>
+    <th align="left">Google Lighthouse Analysis Results (Homepage)</th>
+  </tr>
+  <tr>
+    <td valign="top" width="240"><b>Original</b></td>
+    <td valign="top" width="500"><a href="lighthouse-before.png"><img src="lighthouse-before.png" width="500" alt="lighthouse scores for current website homepage" ></a></td>
+  </tr>
+  <tr>
+    <td valign="top" width="240"><b>Redesign</b></td>
+    <td valign="top" width="500"><a href="lighthouse-after.png"><img src="lighthouse-after.png" width="500" alt="lighthouse scores for redesigned website homepage" ></a></td>
+  </tr>
+</table>
+
+
 ## Look and feel
 
 **Home page intro.** The home page opens with a short line-drawing animation of a latte being poured, over a painted brick-and-pothos stairwell. The pour follows a natural curve. It lasts about three seconds, plays at most once every 30 days on a given phone or computer, and can be skipped with a tap or the Skip button. First-time visitors get the animation, and regulars aren't made to sit through it every visit.
@@ -134,11 +166,11 @@ These changes help people who use screen readers, navigate by keyboard, or are s
 
 **Mice on Main link.** The "Looking for Mice on Main?" line was near the top of the home page. At the moment, anyone who clicks through to miceonmain.com gets a security warning from their browser because of an expired certificate on that site. The line has moved further down, to the end of "Something for everyone", so the first link visitors see doesn't lead to a warning. The wording and the link are unchanged.
 
-**Extras page.** The Extras page, linked from About, still had template text from the Wix editor: a browser tab titled "BLANKKKKKK", a heading that read "I'm a title. Click here to edit me", and a blank where a furniture store's name should be. The page isn't included in the new site, and the link to it on the About page is removed. Anyone who uses the old address (/blank) lands on the About page. The Cauble Building paragraph is saved and can come back once the store name is filled in.
+**Extras page.** The [Extras page](https://www.coffeeunderground.info/blank), linked from About, still had template text from the Wix editor: a browser tab titled "BLANKKKKKK", a heading that read "I'm a title. Click here to edit me", and a blank where a furniture store's name should be. The page isn't included in the new site, and the link to it on the About page is removed. Anyone who uses the old address (/blank) lands on the About page. The Cauble Building paragraph is saved and can come back once the store name is filled in.
 
 **"Created with Wix.com".** This is removed from the footer. Your copyright line stays.
 
-**Original photos.** The full-size originals of every photo, exactly as they were uploaded to Wix, are stored with the site files, so you'll always have them.
+**Original photos.** The full-size originals of every photo, exactly as they were uploaded to Wix, are stored with the site files, so you'll always have them. Only the smaller versions are actually being served though, to help with performance.
 
 ## Spelling and grammar fixes
 
@@ -146,25 +178,13 @@ Only clear typos and grammar slips were changed. Wording, tone and facts are as 
 
 - **Contact:** Risorante → Ristorante; "(like Cheers.)" → "(like Cheers)."; the phone number is written as (864) 298-0494.
 - **About:** rennovated → renovated; hurricane Helene → Hurricane Helene; "I purchased the 5200 SF where CU still sits" → "I purchased the 5200 square feet of property where CU still sits".
-- **Events:** "Open Mic The longest running comedy show" is split into a title, "No Expectations Comedy Open Mic", followed by "The longest-running comedy show...".
 - **Coffee Facts:** Mocca → Mocha; hundred of years → hundreds of years; it's way → its way; alledgedly → allegedly; annonymously → anonymously; "Martinique to the by means of" → "Martinique by means of"; Ethiopis → Ethiopia; "integral part life" → "integral part of life"; hearty evergreens → hardy evergreens; "which coffee species used" and "which method used" → "is used"; pop corn → popcorn; In a Nut Shell → In a Nutshell; i.e. → e.g. where the lists are examples; Frangrance → Fragrance; "Spicy. Caramel" → "Spicy, Caramel"; chains stores → chain stores; ozygen → oxygen.
 - **Menu:** see "Menu spelling" above.
 
-## What we need from you
+## Things to Review
 
 1. The weekly No Expectations Comedy entry in your Google Calendar starts at 7pm, but the show starts at 7:30pm. The entry's own description says 7:30pm, and so does visitgreenvillesc.com. The Events page shows whatever the calendar says, so changing that start time to 7:30pm fixes it everywhere.
-2. If you'd like the Cauble Building history back on the site, we just need the furniture store's name.
-3. The Alchemy section says "check out their classes page" but has no link. If you know the page, we'll add it.
-4. Most photos had no captions on Wix, so several have general descriptions for screen readers. A few words about what's in each photo would help.
-5. You may want to let Mice on Main know that their website shows a security warning.
-
-## Before the new site goes live
-
-Your web address, coffeeunderground.info, is managed through Wix right now. Moving the site is safe as long as your email settings stay in place.
-
-The address has settings that route email through Google (Google Workspace). If you or your staff use any email address ending in @coffeeunderground.info, those settings are what deliver it. When the address is pointed at the new site, only the website settings change, and the email settings have to stay exactly as they are or that mail stops arriving. We'll switch the website over first and confirm that the new site loads at coffeeunderground.info and that mail still arrives. Only after that should the Wix plan be cancelled.
-
-Two questions for you:
-
-- Do you use any @coffeeunderground.info email addresses, or only cugreenville@gmail.com?
-- Did you buy the coffeeunderground.info address through Wix, or somewhere else?
+2. The incomplete Extras page was removed but you may have a complete version of that page you want to include in the site. 
+3. The Alchemy section says "check out their classes page" but has no link, not sure if that is intentional.
+4. Most photos had no captions on Wix, so several have general descriptions for screen readers. A few words about what's in each photo would help accessibility.
+5. The Mice on Main website SSL cert expired back in July so I'll reach out to notify them. Your link to that site was near the top of your homepage, so I just moved it down a bit given it's current state.
