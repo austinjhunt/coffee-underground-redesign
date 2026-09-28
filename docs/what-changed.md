@@ -32,7 +32,7 @@ The changes are about how the site works for visitors: on phones, for people who
     </td>
     <td valign="top" width="220">
       <a href="IMG_1790.jpg"><img src="IMG_1790.jpg" width="200" alt="footer has a non-rendering image reference"></a><br>
-      <b>Footer - broke image</b><br>
+      <b>Footer - broken image</b><br>
       The footer has a non-rendering image reference.
     </td>
   </tr>
